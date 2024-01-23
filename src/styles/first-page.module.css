@@ -1,0 +1,14 @@
+.box_image{
+  width: 300px;
+  height: 250px;
+}
+@font-face{
+  font-family: classy;
+  src:url(../font/Classy.ttf);
+}
+.firstPage{
+  font-family: classy;
+}
+.img:hover{
+  opacity: 0.5;
+}

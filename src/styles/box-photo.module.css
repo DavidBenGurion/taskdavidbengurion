@@ -1,0 +1,9 @@
+.box_pages{
+  cursor: pointer;
+}
+.box_pages p{
+  font-style: 900;
+} 
+.box_image:hover{
+  opacity: 0.5;
+}

@@ -1,0 +1,30 @@
+.title_bar{
+  color: black;
+  font-family: classy;
+}
+.title_bar:hover{
+  color: red;
+}
+@font-face{
+  font-family: classy;
+  src:url(../font/Classy.ttf);
+}
+#text_foto{
+  font-family: classy;
+}
+#input_cari{
+   font-family: serif;
+}
+#input_cari{
+  padding:0 10px;
+  border: 0px;
+  border-bottom: 1px solid black;
+  background-color: #F5F7F8;
+}
+#input_cari::placeholder{
+  font-family: serif;
+  font-style: italic;
+}
+#input_cari:hover{
+  border:0;
+}

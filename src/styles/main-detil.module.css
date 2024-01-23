@@ -1,0 +1,8 @@
+@font-face {
+  font-family: garet;
+  src: url(../font/Garet.ttf);
+}
+.title_photo{
+  font-family: garet;
+  font-weight: 700;
+}
