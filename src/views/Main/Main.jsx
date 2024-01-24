@@ -10,9 +10,11 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Helmet } from "react-helmet";
+import HotTag from "./HotTag";
 const  Main=()=>{
     const[photos,setPhotos]=useState([]);
     const[pagination,setPagination]=useState([]) 
+    const[hotTag,setHotTag]=useState([]);
     const startPageList=useRef();
     const endPageList=useRef();
     const currentPage=useRef();
@@ -22,7 +24,15 @@ const  Main=()=>{
     const cariInput=useRef("");
     useEffect(()=>{
        getRecentPhoto();
+       getHotTag();
     },[])
+    const getHotTag=()=>{
+        axiosClient.get('?method=flickr.tags.getHotList&api_key=7864a899300716253e64d678a63f6323&period=week&count=5&format=json&nojsoncallback=1').then(({data})=>{
+            // console.log();
+            console.log(data.hottags.tag)
+            setHotTag(data.hottags.tag)
+        })
+    }
     const getRecentPhoto=()=>{
         endPageList.current=10;
         startPageList.current=1;
@@ -249,7 +259,7 @@ const  Main=()=>{
             <Helmet>
                 <style>{'body{ background-color:#A9A9A9; }'}</style>
             </Helmet>
-             <div className="mx-auto " style={{width:"90%"}}> 
+             <div className="  ms-2 d-inline-block align-top" style={{width:"63%"}}> 
                 {/* <h1>hell world</h1> */}
                 <div className="box-cari w-50 mx-auto py-1 bg-light px-1 ">
                     <div className="  d-inline-block" style={{width:"90%"}}>
@@ -306,6 +316,9 @@ const  Main=()=>{
                         </table>
                     </div>
                 </div>
+             </div>
+             <div style={{width:"35%"}} className=" d-inline-block align-top ms-1">
+                <HotTag hotTag={hotTag}/>
              </div>
         </React.Fragment>
        

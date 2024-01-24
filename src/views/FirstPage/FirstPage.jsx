@@ -6,15 +6,17 @@ const FirstPage=()=>{
   const [photoList,setPhotoList]=useState([]);
   const navigate = useNavigate();
   useEffect(()=>{
-    axiosClient.get(`?method=flickr.photos.search&api_key=7864a899300716253e64d678a63f6323&tags=animal&per_page=9&page=1&format=json&nojsoncallback=1`).then(({data})=>{
+    axiosClient.get('?method=flickr.tags.getHotList&api_key=7864a899300716253e64d678a63f6323&period=year&count=20&format=json&nojsoncallback=1').then(({data})=>{
       var dataPhotoList=[];
-      console.log(data.photos);
-      for (let index = 0; index < 4; index++) {
-          dataPhotoList.push({src:`https://live.staticflickr.com/${data.photos.photo[index].server}/${data.photos.photo[index].id}_${data.photos.photo[index].secret}_w.jpg`,
-                            id:data.photos.photo[index].id,
-                            secret:data.photos.photo[index].secret})
+      console.log(data);
+      const phototag=data.hottags.tag;
+      // console.log(data.photos);
+      for (let index = 4; index < 8; index++) {
+          dataPhotoList.push({src:`https://live.staticflickr.com/${phototag[index].thm_data.photos.photo[0].server}/${phototag[index].thm_data.photos.photo[0].id}_${phototag[index].thm_data.photos.photo[0].secret}_w.jpg`,
+                            id:phototag[index].thm_data.photos.photo[0].id,
+                            secret:phototag[index].thm_data.photos.photo[0].secret})
       }
-      console.log(dataPhotoList)
+      // console.log(dataPhotoList)
       setPhotoList(dataPhotoList)
     })
   },[])

@@ -1,0 +1,23 @@
+#title_hot_tag{
+  font-family: classy;
+}
+@font-face{
+  font-family: classy;
+  src:url(../font/Classy.ttf);
+}
+.hot_tag_title{
+  font-family: classy;
+}
+.text_container{
+  background-color: #EDEDED;
+  opacity: 0.8;
+}
+.text_desc{
+  font-weight: bold;
+  color: black;
+  font-family: classy;
+}
+.text_owner{
+  font-size: 12px;
+  font-family: classy;
+}

@@ -15,7 +15,7 @@ const BoxPhoto=(props)=>{
   return(
     <React.Fragment>
       <div className={styles.box_image+" position-relative"} style={{cursor:"pointer"}} onClick={()=>redirectToDetailPhoto(props.photo.id,props.photo.secret)}>
-        <img src={`https://live.staticflickr.com/${props.photo.server}/${props.photo.id}_${props.photo.secret}_w.jpg`} alt="" />
+        <img src={`https://live.staticflickr.com/${props.photo.server}/${props.photo.id}_${props.photo.secret}_w.jpg`} className="w-100 h-100" />
       
       </div>   
     </React.Fragment>     
