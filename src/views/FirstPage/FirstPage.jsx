@@ -8,6 +8,7 @@ const FirstPage=()=>{
   useEffect(()=>{
     axiosClient.get(`?method=flickr.photos.search&api_key=7864a899300716253e64d678a63f6323&tags=animal&per_page=9&page=1&format=json&nojsoncallback=1`).then(({data})=>{
       var dataPhotoList=[];
+      console.log(data.photos);
       for (let index = 0; index < 4; index++) {
           dataPhotoList.push({src:`https://live.staticflickr.com/${data.photos.photo[index].server}/${data.photos.photo[index].id}_${data.photos.photo[index].secret}_w.jpg`,
                             id:data.photos.photo[index].id,

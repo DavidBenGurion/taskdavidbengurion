@@ -26,22 +26,22 @@ const ListPagination=(props)=>{
             ):(
               page.indeks==">"||page.indeks=="<"?(
                 page.indeks==">"?(
-                  <div className={"d-inline-block me-2 p-2 py-0  bg-light border border-danger "+styles.box_pages} onClick={()=>paginationFunc(page.url,1)}>
-                      <p className="mb-2 mt-1 mx-1 text-danger ">
+                  <div className={"d-inline-block me-2 p-2 py-0  bg-light border border-dark "+styles.box_pages} onClick={()=>paginationFunc(page.url,1)}>
+                      <p className="mb-2 mt-1 mx-1 text-dark ">
                           {page.indeks}
                       </p>
                   </div>
                 ):(
-                  <div className={"d-inline-block me-2 p-2 py-0  bg-light border border-danger "+styles.box_pages} onClick={()=>paginationFunc(page.url,2)}>
-                      <p className="mb-2 mt-1 mx-1 text-danger ">
+                  <div className={"d-inline-block me-2 p-2 py-0  bg-light border border-dark "+styles.box_pages} onClick={()=>paginationFunc(page.url,2)}>
+                      <p className="mb-2 mt-1 mx-1 text-dark ">
                           {page.indeks}
                       </p>
                   </div>
                 )
                
               ):(
-                <div className={"d-inline-block me-2 p-2 py-0  bg-light border border-danger "+styles.box_pages} onClick={()=>paginationFunc(page.url,0)}>
-                    <p className="mb-2 mt-1 mx-1 text-danger ">
+                <div className={"d-inline-block me-2 p-2 py-0  bg-light border border-dark "+styles.box_pages} onClick={()=>paginationFunc(page.url,0)}>
+                    <p className="mb-2 mt-1 mx-1 text-dark ">
                         {page.indeks}
                     </p>
                 </div>
