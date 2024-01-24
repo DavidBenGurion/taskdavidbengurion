@@ -5,8 +5,11 @@ import styles from '../../styles/main-detil.module.css';
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content';
 const MainDetil=()=>{
   const navigate = useNavigate();
+  const swalLoading = withReactContent(Swal)
   const{secret,photoId}=useParams();
   const[photoinfo,setPhotoInfo]=useState({owner:{username:"",nsid:"",location:""},
                                           description:{_content:""},
@@ -16,10 +19,20 @@ const MainDetil=()=>{
                                           tags:{tag:[]},
                                           dates:{taken:""}});
   useEffect(()=>{
+    swalLoading.fire({
+      title: <p>Loading</p>,
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      allowEnterKey: false,
+      didOpen: () => {
+       swalLoading.showLoading()
+      },
+  })
     axiosClient.get(`?method=flickr.photos.getInfo&api_key=7864a899300716253e64d678a63f6323&photo_id=${photoId}&secret=${secret}&format=json&nojsoncallback=1`).then(({data})=>{
         // setPhotoInfo(data.photo)
         console.log(data)
         setPhotoInfo(data.photo)
+        swalLoading.close();
        })
   },[])
   const redirectToTag=(tag)=>{

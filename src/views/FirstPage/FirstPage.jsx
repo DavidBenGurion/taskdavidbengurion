@@ -2,10 +2,22 @@ import React, { useEffect, useState } from "react";
 import styles from '../../styles/first-page.module.css';
 import axiosClient from "../../axios-client";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content';
 const FirstPage=()=>{
   const [photoList,setPhotoList]=useState([]);
   const navigate = useNavigate();
+  const swalLoading = withReactContent(Swal)
   useEffect(()=>{
+    swalLoading.fire({
+      title: <p>Loading</p>,
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      allowEnterKey: false,
+      didOpen: () => {
+       swalLoading.showLoading()
+      },
+  })
     axiosClient.get('?method=flickr.tags.getHotList&api_key=7864a899300716253e64d678a63f6323&period=year&count=20&format=json&nojsoncallback=1').then(({data})=>{
       var dataPhotoList=[];
       console.log(data);
@@ -18,6 +30,7 @@ const FirstPage=()=>{
       }
       // console.log(dataPhotoList)
       setPhotoList(dataPhotoList)
+      swalLoading.close();
     })
   },[])
   const redirectToDetailPhoto=(photoId,secret)=>{

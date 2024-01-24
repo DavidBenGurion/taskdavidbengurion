@@ -155,7 +155,7 @@ const MainTag=()=>{
             }else{
                 setToggleCari(true);
                 cariInput.current =  cariData;  
-                cariDataByTag();
+                cariDataByTag(cariData);
             }
 
         }
